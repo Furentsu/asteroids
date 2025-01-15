@@ -1,5 +1,7 @@
 import pygame
 from constants import *
+from player import Player
+from circleshape import CircleShape
 
 def main():
     pygame.init()
@@ -11,6 +13,9 @@ def main():
     # Initialize the delta time variable
     dt = 0
 
+    # Create a player object
+    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+
     # Game loop
     while True:
         # Handle events
@@ -20,6 +25,9 @@ def main():
 
         # Fill the screen with black color
         screen.fill((0, 0, 0))
+
+        # Draw the player
+        player.draw(screen)
 
         # Update the display with the new frame
         pygame.display.flip()
