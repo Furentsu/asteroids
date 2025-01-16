@@ -13,6 +13,13 @@ def main():
     # Initialize the delta time variable
     dt = 0
 
+    # Create groups for game objects
+    updatable = pygame.sprite.Group() 
+    drawable = pygame.sprite.Group()
+
+    # Set the player container to the updatable and drawable groups
+    Player.containers = (updatable, drawable)
+
     # Create a player object
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 
@@ -26,11 +33,13 @@ def main():
         # Fill the screen with black color
         screen.fill((0, 0, 0))
         
-        # Update the player
-        player.update(dt)
-
-        # Draw the player
-        player.draw(screen)
+        # Update all game objects
+        for obj in updatable:
+            obj.update(dt)
+        
+        # Draw all game objects
+        for obj in drawable:
+            obj.draw(screen)
 
         # Update the display with the new frame
         pygame.display.flip()
