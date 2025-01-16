@@ -16,9 +16,11 @@ def main():
     # Create groups for game objects
     updatable = pygame.sprite.Group() 
     drawable = pygame.sprite.Group()
+    asteroids = pygame.sprite.Group()
 
     # Set the player container to the updatable and drawable groups
     Player.containers = (updatable, drawable)
+    Asteroid.containers = (asteroids, updatable, drawable)
 
     # Create a player object
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
