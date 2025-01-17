@@ -4,6 +4,7 @@ from player import Player
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
 from circleshape import CircleShape
+import sys
 
 def main():
     pygame.init()
@@ -44,6 +45,11 @@ def main():
         for obj in updatable:
             obj.update(dt)
         
+        # Check for collisions
+        for asteroid in asteroids:
+            if player.check_collision(asteroid):
+                sys.exit("Game over")
+            
         # Draw all game objects
         for obj in drawable:
             obj.draw(screen)
